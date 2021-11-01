@@ -88,6 +88,8 @@ public class ExampleITest extends KarafTestSupport {
                 new VMOption("--add-opens"),
                 new VMOption("java.base/java.util=ALL-UNNAMED"),
                 new VMOption("--add-opens"),
+                new VMOption("java.base/jdk.internal.reflect=ALL-UNNAMED"),
+                new VMOption("--add-opens"),
                 new VMOption("java.naming/javax.naming.spi=ALL-UNNAMED"),
                 new VMOption("--add-opens"),
                 new VMOption("java.rmi/sun.rmi.transport.tcp=ALL-UNNAMED"),
@@ -96,7 +98,13 @@ public class ExampleITest extends KarafTestSupport {
                 new VMOption("--add-exports=java.base/sun.net.www.protocol.jar=ALL-UNNAMED"),
                 new VMOption("--add-exports=jdk.naming.rmi/com.sun.jndi.url.rmi=ALL-UNNAMED"),
                 new VMOption("-classpath"),
-                new VMOption("lib/jdk9plus/*" + File.pathSeparator + "lib/boot/*")
+                new VMOption("lib/jdk9plus/*" + File.pathSeparator + "lib/boot/*"),
+                new VMOption("-Xmx6144M"),
+                new VMOption("-Djava.awt.headless=true"),
+                new VMOption("-Dfile.encoding=UTF8"),
+                new VMOption("-Dddf.home={karaf.home}"),
+                new VMOption("-Dddf.home.perm={karaf.home}"),
+                new VMOption("-Dddf.home.policy={karaf.home}")
             };
         } else {
             return new Option[]{
